@@ -63,6 +63,7 @@ export default {
 </script>
 
 <!-- 깃 빌드 에러 깃허브 페이지 생성을 도와주는 패키지 npm install --save gh-pages -->
+<!-- https://hee-dev.tistory.com/7 -->
 <style scoped>
 
 </style>
