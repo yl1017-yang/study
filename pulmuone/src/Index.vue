@@ -65,6 +65,7 @@ export default {
 <!-- 깃 빌드 에러 깃허브 페이지 생성을 도와주는 패키지 npm install --save gh-pages -->
 <!-- https://hee-dev.tistory.com/7 -->
 <!-- git subtree push --prefix dist origin gh-pages -->
+<!-- https://velog.io/@kimyunbin/Github-Actions-%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B0%B0%ED%8F%AC-%EC%9E%90%EB%8F%99%ED%99%94 -->
 
 <style scoped>
 
