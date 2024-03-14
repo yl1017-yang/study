@@ -2,13 +2,24 @@
 .wrap .wrap-inner{min-width:1168px;width:1168px;margin:0 auto;}
 
 .header-wrap{}
-.header-wrap .hedaer-util{display:flex;}
-.header-wrap .hedaer-util .logo{display:inline-block;width:176px;height:44px;}
-.header-wrap .hedaer-util .logo a{display:block;width:100%;height:100%;background:url(../images/pulmuone-shop.svg) no-repeat 50% / 100%;}
-.header-wrap .hedaer-util .search{}
+.header-wrap .hedaer-top{display:flex;align-items:center;height:80px;}
+.header-wrap .hedaer-top .logo{display:inline-block;width:176px;height:44px;margin-right:30px;}
+.header-wrap .hedaer-top .logo a{display:block;width:100%;height:100%;background:url(../images/pulmuone-shop.svg) no-repeat 50% / 100%;}
+.header-wrap .hedaer-top .search{position:relative;width:460px;height:50px;border:1px solid #80c342;border-radius:24px;}
+.header-wrap .hedaer-top .search input{width:90%;height:100%;background:none;border:none;padding:0 50px 0 20px;font-size:16px;line-height:24px;}
+.header-wrap .hedaer-top .search .btn-search{width: 34px;height: 34px;position: absolute;top: 7px;right: 16px;background: url(../images/search-line.svg) no-repeat 50%;}
+.header-wrap .hedaer-top .btn-link{margin-left:20px;background:#80c342;padding:10px 30px;border-radius:100px;color:#fff;}
 
-.header-wrap .hedaer-nav{display:flex;align-items:center;height:68px;}
+.header-wrap .hedaer-nav{display:flex;align-items:center;height:70px;}
+.header-wrap .hedaer-nav nav a{display:inline-block;font-size:16px;font-weight:500;color:#000;margin:0 15px;}
+.header-wrap .hedaer-nav .btn-category{display:flex;align-items:center;font-size:16px;font-weight:700;color:#000;margin-right:50px;}
+.header-wrap .hedaer-nav .btn-category::before{content:"";display:inline-block;width: 36px;height: 36px;margin-right:6px;background: url(../images/menu-line.svg) no-repeat 50%;vertical-align: bottom;}
 
 .container{display:flex;margin-top:60px;min-height:500px;}
-.container .lnb{width:176px;margin-right:64px;border:1px solid red}
-.container .content{flex:1;border:1px solid blue}
+.lnb-wrap{width:176px;margin-right:64px;}
+.lnb-wrap .lnb-title{margin-bottom: 8px;color: #000;font-size: 22px;font-weight: 500;line-height: 32px;}
+.lnb-wrap .lnb-subtitle{padding: 12px 0;color: #000;font-size: 16px;font-weight: 500;line-height: 20px;}
+.lnb-wrap .lnb-list li{padding: 6px 0;color: #000;font-size: 14px;line-height: 20px;}
+.lnb-wrap .lnb-list .active{color: #80c342;}
+
+.content{flex:1;}

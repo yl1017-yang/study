@@ -1,10 +1,14 @@
 <template>
-  <v-app id="app">
-    <CommonHeader />
+  <!-- <v-app id="app"> -->
+    <div class="wrap">
+      <div class="wrap-inner">
+      
+        <CommonHeader />
+        <router-view></router-view>
 
-    <router-view></router-view>
-
-  </v-app>
+    </div>
+  </div>
+  <!-- </v-app> -->
 </template>
 
 <script>
