@@ -1,0 +1,14 @@
+.wrap{max-width:1920px;}
+.wrap .wrap-inner{min-width:1168px;width:1168px;margin:0 auto;}
+
+.header-wrap{}
+.header-wrap .hedaer-util{display:flex;}
+.header-wrap .hedaer-util .logo{display:inline-block;width:176px;height:44px;}
+.header-wrap .hedaer-util .logo a{display:block;width:100%;height:100%;background:url(../images/pulmuone-shop.svg) no-repeat 50% / 100%;}
+.header-wrap .hedaer-util .search{}
+
+.header-wrap .hedaer-nav{display:flex;align-items:center;height:68px;}
+
+.container{display:flex;margin-top:60px;min-height:500px;}
+.container .lnb{width:176px;margin-right:64px;border:1px solid red}
+.container .content{flex:1;border:1px solid blue}
