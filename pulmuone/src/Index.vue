@@ -62,7 +62,7 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- 깃 빌드 에러 깃허브 페이지 생성을 도와주는 패키지 npm install --save gh-pages -->
 <style scoped>
 
 </style>
