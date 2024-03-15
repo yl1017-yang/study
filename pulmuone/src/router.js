@@ -4,12 +4,12 @@ import Js from './Js.vue';
 
 const routes = [
   {
-    path: "/",
+    path: "/study/",
     name: "Index",
     component: Index,
   },
   {
-    path: "/js",
+    path: "/study/js",
     name: "Js",
     component: Js,
   },
