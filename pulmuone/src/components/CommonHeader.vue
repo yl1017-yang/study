@@ -2,13 +2,13 @@
   <header class="header-wrap">
     <div class="hedaer-top">
       <h1 class="logo">
-        <router-link to="/"><span class="blind">#Pulmuone</span></router-link>
+        <router-link to="/study/"><span class="blind">#Pulmuone</span></router-link>
       </h1>
       <div class="search">
         <input type="text" placeholder="#풀무원, 나와 지구를 위한 바른먹거리 마켓" maxlength="30">
         <button type="button" class="btn-search"><span class="blind">검색</span></button>
       </div>
-      <router-link to="/js" class="btn-link">자바스크립트 테스트</router-link>
+      <router-link to="/study/js" class="btn-link">자바스크립트 테스트</router-link>
     </div>
     <div class="hedaer-nav">
       <div class="category">
