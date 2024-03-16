@@ -13,8 +13,21 @@
     <div class="hedaer-nav">
       <div class="category">
         <button @click="categoryClick()" type="button" href="#전체 카테고리" class="btn-category">전체 카테고리</button>
-        <div class="category-list" v-if="categoryShow">
-          카태고리 내용 데이타 받아와야함
+        <!-- <div class="category-list" v-if="categoryShow"> -->
+        <div class="category-list" :class="{ active: categoryShow }">
+          <ul>
+            <li v-for="(item, index) in items" :key="index" @mouseenter="depOver(index)" @mouseleave="depOver(index)">
+              <a href="#none" class="dep1">{{ item.dep1 }}</a>
+              <ul class="dep2" :class="{ active: depShow === index }">
+                <li>
+                  <a href="#none">{{ item.dep2 }}</a>
+                  <ul class="dep3">
+                    <li><a href="#none">{{ item.dep3 }}</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
       <nav>
@@ -36,7 +49,14 @@ export default {
   data() {
     return {
       searchInput: "",
-      categoryShow: false
+      categoryShow: false,
+      depShow: null,
+
+      items: [
+        { dep1: '로하스', dep2: ['로하스11', '로하스2'], dep3: '로하스22222' },
+        { dep1: '선물세트', dep2: ['선물세트11', '선물세트22'], dep3: '선물세트22222' },
+        { dep1: '두부,콩나물,달걀', dep2: ['두부,콩나물,달걀11', '두부,콩나물,달걀22'], dep3: '22222' }
+      ]
     };
   },
 
@@ -48,12 +68,25 @@ export default {
     }, 
     categoryClick() {
       this.categoryShow = !this.categoryShow;
-    }
+    },
+    depOver(index) {
+      // this.depShow = this.depShow === index ? null : index;
+      this.depShow = index;
+    },
   }
 }
 </script>
 
 <style scoped>
 .category{position:relative;}
-.category-list{position:absolute;top:54px;left:0;width:214px;min-height:500px;background:#fff;border:1px solid #ccc;border-top:0;border-radius:0 0 10px 10px;box-shadow: rgba(0, 0, 0, 0.1) 20px 10px 20px;z-index:1;}
+.category-list{display:none;position:absolute;top:54px;left:0;width:214px;background:#fff;border:1px solid #ccc;border-top:0;border-radius:0 0 0 10px;box-shadow: rgba(0, 0, 0, 0.1) 20px 10px 20px;z-index:1;}
+.category-list.active{display:block;}
+.category-list > ul{position:relative;padding:20px 0 24px 0;height:100%;}
+
+.dep1{display:flex;padding:10px 20px 10px;height:100%;}
+.dep2{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px;}
+.dep2.active{display:block;}
+.dep2 > li{padding:6px 0;}
+.dep3{display:none;position:absolute;top:1px;left:420px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px;}
+.dep3.active{display:block;}
 </style>
