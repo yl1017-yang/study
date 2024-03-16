@@ -157,7 +157,7 @@
 <script>
 
 export default {
-  name: 'App',
+  name: 'AppJs',
   components: {
   },
 
@@ -217,13 +217,12 @@ export default {
   //     return { scriptInput }
   //   }
   // },
-
 }
 </script>
 
 
 <style scoped>
-/* 올가 노르웨이 기획전 */
+/* 올가 노르웨이 기획전 스크립트 테스트 */
 /* wide common */
 .event_wrap .evt_wide_wrap{position:relative;max-width:1920px;margin:0 auto;text-align:left}
 .event_wrap .evt_section,.event_wrap .evt_notice{position:relative;width:1168px;margin:0 auto}

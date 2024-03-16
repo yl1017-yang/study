@@ -1,23 +1,24 @@
 <template>
-  <!-- <v-app id="app"> -->
-    <div class="wrap">
-      <div class="wrap-inner">
+  <div class="wrap">
+    <div class="wrap-inner">
       
-        <CommonHeader />
-        <router-view></router-view>
+      <CommonHeader />
+      <router-view></router-view>
+      <CommonFooter />
 
     </div>
   </div>
-  <!-- </v-app> -->
 </template>
 
 <script>
 import CommonHeader from './components/CommonHeader.vue'
+import CommonFooter from './components/CommonFooter.vue'
 
 export default {
   name: 'App',
   components: {
-    CommonHeader
+    CommonHeader,
+    CommonFooter
   }
 }
 </script>
