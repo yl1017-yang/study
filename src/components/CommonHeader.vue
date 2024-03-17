@@ -17,11 +17,11 @@
         <div class="category-list" :class="{ active: categoryShow }">
           <ul>
             <li v-for="(item, index) in items" :key="index" @mouseenter="depOver(index)" @mouseleave="depOver(index)">
-              <a href="#none" class="dep1">{{ item.dep1 }}</a>
+              <a href="#none" class="dep1" :class="{ active: depShow === index }">{{ item.dep1 }}</a>
               <ul class="dep2" :class="{ active: depShow === index }">
                 <li>
                   <a href="#none">{{ item.dep2 }}</a>
-                  <ul class="dep3">
+                  <ul class="dep3" :class="{ active: depShow === index }">
                     <li><a href="#none">{{ item.dep3 }}</a></li>
                   </ul>
                 </li>
@@ -51,6 +51,7 @@ export default {
       searchInput: "",
       categoryShow: false,
       depShow: null,
+      dep2Show: null,
 
       items: [
         { dep1: '로하스', dep2: ['로하스11', '로하스2'], dep3: '로하스22222' },
@@ -84,9 +85,10 @@ export default {
 .category-list > ul{position:relative;padding:20px 0 24px 0;height:100%;}
 
 .dep1{display:flex;padding:10px 20px 10px;height:100%;}
+.dep1.active{background:#eee;}
 .dep2{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px;}
 .dep2.active{display:block;}
 .dep2 > li{padding:6px 0;}
-.dep3{display:none;position:absolute;top:1px;left:420px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px;}
+.dep3{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px;}
 .dep3.active{display:block;}
 </style>
