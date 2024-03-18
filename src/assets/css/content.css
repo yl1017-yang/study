@@ -18,7 +18,7 @@
 
 .footer-wrap{background:#eee;min-height:200px;text-align:center;}
 
-.container{display:flex;margin-top:60px;min-height:500px;}
+.container{display:flex;margin-top:60px;min-height:600px;}
 .lnb-wrap{width:176px;margin-right:34px;}
 .lnb-wrap .lnb-title{margin-bottom:8px;color: #000;font-size: 22px;font-weight: 500;line-height: 32px;}
 .lnb-wrap .lnb-subtitle{padding: 12px 0;color: #000;font-size: 16px;font-weight: 500;line-height: 20px;}

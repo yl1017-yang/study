@@ -194,9 +194,6 @@ export default {
           } else {
             entry.target.classList.remove('active');
           }
-
-          // Your additional logic for when an element is intersecting
-
           console.log('entry:', entry);
         });
       }, this.options);

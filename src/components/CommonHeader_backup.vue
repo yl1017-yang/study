@@ -13,17 +13,17 @@
     <div class="hedaer-nav">
       <div class="category">
         <button @click="categoryClick()" type="button" href="#전체 카테고리" class="btn-category">전체 카테고리</button>
-        <!-- <div class="category-list" v-if="categoryShow"> -->
-        <!-- 중첩 반복문 https://velog.io/@reasonz/2022.06.03-Vue3-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%A0%8C%EB%8D%94%EB%A7%81%EB%B0%B0%EC%97%B4-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-v-for-%EC%A4%91%EC%B2%A9-%EB%B0%98%EB%B3%B5 -->
         <div class="category-list" :class="{ active: categoryShow }">
           <ul>
-            <li v-for="(item, dep1Index) in items" :key="dep1Index" @mouseenter="depOver(dep1Index)" @mouseleave="depOver(dep1Index)">
+            <li v-for="(item, dep1Index) in items" :key="dep1Index" @mouseenter="depOver(dep1Index)" @mouseleave="depOver(null)">
               <a href="#none" class="dep1" :class="{ active: depShow === dep1Index }">{{ item.dep1 }}</a>
               <ul class="dep2" :class="{ active: depShow === dep1Index }">
-                <li v-for="(dep2, dep2Index) in item.dep2" :key="dep2Index" @mouseenter="dep2Over(dep1Index)">
-                  <a href="#none">{{ dep2 }}</a>
-                  <ul class="dep3" :class="{ active: dep2Show === dep1Index }">
-                    <li v-for="(dep3, dep3Index) in item.dep3" :key="dep3Index"><a :href="`https://shop.pulmuone.co.kr/shop/goodsList?itemId=${item.link}`">{{ dep3 }}</a></li>
+                <li v-for="(dep2Item, dep2Index) in item.children" :key="dep2Index" @mouseenter="dep2Over(dep1Index, dep2Index)" @mouseleave="dep2Over(null, null)">
+                  <a href="#none">{{ dep2Item.dep2 }}</a>
+                  <ul class="dep3" :class="{ active: dep2Show === dep2Index && depShow === dep1Index }">
+                    <li v-for="(dep3Item, dep3Index) in dep2Item.dep3" :key="dep3Index" @mouseenter="dep3Over(dep1Index, dep2Index, dep3Index)" @mouseleave="dep3Over(null, null, null)">
+                      <a :href="`https://shop.pulmuone.co.kr/shop/goodsList?itemId=${dep3Item.link}`">{{ dep3Item.name }}</a>
+                    </li>
                   </ul>
                 </li>
               </ul>
@@ -53,11 +53,31 @@ export default {
       categoryShow: null,
       depShow: null,
       dep2Show: null,
+      dep3Show: null,
 
       items: [
-        { dep1: '로하스', dep2: ['로하스11', '로하스2'], dep3: ['로하스3333', '로하스333', '로하스333', '로하스333'], link: 4908 },
-        { dep1: '선물세트', dep2: ['선물세트11', '선물세트22'], dep3: ['선물세트3332', '선물세트33'], link: 5404 },
-        { dep1: '두부,콩나물,달걀', dep2: ['두부,콩나물,달걀11', '두부,콩나물,달걀22'], dep3: ['두부,콩나물,달걀3332', '두부,콩나물,달걀33'], link: 4908 }
+        { id: 1, 
+          dep1: '로하스',
+          children: [
+            { dep2: '로하스11', dep3: [{ name: '로하스111', link: '4908' }, { name: '로하스111', link: '4909' }, { name: '로하스11111', link: '4909' }] },
+            { dep2: '로하스22', dep3: [{ name: '로하스221', link: '4911' }, { name: '로하스222', link: '4912' }] },
+            { dep2: '로하스33', dep3: [{ name: '로하스333', link: '4911' }, { name: '로하스333', link: '4912' }] },
+          ]
+        },
+        { id: 2, 
+          dep1: '선물세트',
+          children: [
+            { dep2: '선물세트11' },
+            { dep2: '선물세트22' }
+          ]
+        },
+        { id: 3, 
+          dep1: '두부,콩나물,달걀',
+          children: [
+            { dep2: '두부,콩나물,달걀11', dep3: [{ name: '두부,콩나물,달걀11', link: '4928' }, { name: '두부,콩나물,달걀11', link: '4929' }] },
+            { dep2: '두부,콩나물,달걀22', dep3: [{ name: '두부,콩나물,달걀22', link: '4931' }, { name: '두부,콩나물,달걀22', link: '4932' }] }
+          ]
+        },
       ]
     };
   },
@@ -72,11 +92,25 @@ export default {
       this.categoryShow = !this.categoryShow;
     },
     depOver(dep1Index) {
-      // this.depShow = this.depShow === dep1Index ? null : dep1Index;
       this.depShow = dep1Index;
     },
-    dep2Over(dep1Index) {
-      this.dep2Show = dep1Index;
+    dep2Over(dep1Index, dep2Index) {
+      if (dep1Index !== null && dep2Index !== null) {
+        this.depShow = dep1Index;
+        this.dep2Show = dep2Index;
+      } else {
+        //this.dep2Show = null;
+        this.dep3Show = null; // dep2가 비활성화되면 dep3도 함께 비활성화
+      }
+    },
+    dep3Over(dep1Index, dep2Index, dep3Index) {
+      if (dep1Index !== null && dep2Index !== null && dep3Index !== null) {
+        this.depShow = dep1Index;
+        this.dep2Show = dep2Index;
+        this.dep3Show = dep3Index;
+      } else {
+        this.dep3Show = null;
+      }
     },
   }
 }
@@ -91,10 +125,11 @@ export default {
 .dep1{display:block;padding:10px 20px 10px;height:100%;}
 .dep1.active{background:#eee;color:#80c342;}
 .dep2{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px;}
-.dep2.active{display:block;color:#80c342;}
+.dep2.active{display:block;}
+.dep2 a:hover{color:#80c342;}
 .dep2 > li{padding:6px 0;}
 .dep3{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px;}
 .dep3.active{display:block;color:#000;}
-.dep3.active:hover{color:#80c342;}
+.dep3 a:hover{color:#80c342;}
 .dep3 > li{padding:6px 0;}
 </style>

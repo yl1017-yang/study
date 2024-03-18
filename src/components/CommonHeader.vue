@@ -15,14 +15,14 @@
         <button @click="categoryClick()" type="button" href="#전체 카테고리" class="btn-category">전체 카테고리</button>
         <div class="category-list" :class="{ active: categoryShow }">
           <ul>
-            <li v-for="(item, dep1Index) in items" :key="dep1Index" @mouseenter="depOver(dep1Index)" @mouseleave="depOver(null)">
-              <a href="#none" class="dep1" :class="{ active: depShow === dep1Index }">{{ item.dep1 }}</a>
+            <li v-for="(item, dep1Index) in categoryAll" :key="dep1Index" @mouseenter="depOver(dep1Index)" @mouseleave="depOver(null)">
+              <a href="#none" class="dep1" :class="{ active: depShow === dep1Index }">{{ item.categoryName }}</a>
               <ul class="dep2" :class="{ active: depShow === dep1Index }">
-                <li v-for="(dep2Item, dep2Index) in item.children" :key="dep2Index" @mouseenter="dep2Over(dep1Index, dep2Index)" @mouseleave="dep2Over(null, null)">
-                  <a href="#none">{{ dep2Item.dep2 }}</a>
+                <li v-for="(dep2Item, dep2Index) in item.subCategoryList" :key="dep2Index" @mouseenter="dep2Over(dep1Index, dep2Index)" @mouseleave="dep2Over(null, null)">
+                  <a href="#none">{{ dep2Item.categoryName }}</a>
                   <ul class="dep3" :class="{ active: dep2Show === dep2Index && depShow === dep1Index }">
-                    <li v-for="(dep3Item, dep3Index) in dep2Item.dep3" :key="dep3Index" @mouseenter="dep3Over(dep1Index, dep2Index, dep3Index)" @mouseleave="dep3Over(null, null, null)">
-                      <a :href="`https://shop.pulmuone.co.kr/shop/goodsList?itemId=${dep3Item.link}`">{{ dep3Item.name }}</a>
+                    <li v-for="(dep3Item, dep3Index) in dep2Item.subCategoryList" :key="dep3Index" @mouseenter="dep3Over(dep1Index, dep2Index, dep3Index)" @mouseleave="dep3Over(null, null, null)">
+                      <a>{{ dep3Item.categoryName }}</a>
                     </li>
                   </ul>
                 </li>
@@ -44,8 +44,9 @@
 </template>
 
 <script>
+import category from '../assets/js/category.js'
 export default {
-  name: 'CommonHeader',
+  name: 'CommonHeader', 
 
   data() {
     return {
@@ -54,38 +55,14 @@ export default {
       depShow: null,
       dep2Show: null,
       dep3Show: null,
-
-      items: [
-        { id: 1, 
-          dep1: '로하스',
-          children: [
-            { dep2: '로하스11', dep3: [{ name: '로하스111', link: '4908' }, { name: '로하스111', link: '4909' }, { name: '로하스11111', link: '4909' }] },
-            { dep2: '로하스22', dep3: [{ name: '로하스221', link: '4911' }, { name: '로하스222', link: '4912' }] },
-            { dep2: '로하스33', dep3: [{ name: '로하스333', link: '4911' }, { name: '로하스333', link: '4912' }] },
-          ]
-        },
-        { id: 2, 
-          dep1: '선물세트',
-          children: [
-            { dep2: '선물세트11' },
-            { dep2: '선물세트22' }
-          ]
-        },
-        { id: 3, 
-          dep1: '두부,콩나물,달걀',
-          children: [
-            { dep2: '두부,콩나물,달걀11', dep3: [{ name: '두부,콩나물,달걀11', link: '4928' }, { name: '두부,콩나물,달걀11', link: '4929' }] },
-            { dep2: '두부,콩나물,달걀22', dep3: [{ name: '두부,콩나물,달걀22', link: '4931' }, { name: '두부,콩나물,달걀22', link: '4932' }] }
-          ]
-        },
-      ]
-    };
+      
+      categoryAll: category[0].category
+    }
   },
 
   methods : {
     searchClick() {
       console.log(this.searchInput);
-      // alert(this.input);
       this.searchInput = "클릭해서 나오는 문구";
     }, 
     categoryClick() {
@@ -93,13 +70,14 @@ export default {
     },
     depOver(dep1Index) {
       this.depShow = dep1Index;
+      console.log(dep1Index);
     },
     dep2Over(dep1Index, dep2Index) {
       if (dep1Index !== null && dep2Index !== null) {
         this.depShow = dep1Index;
         this.dep2Show = dep2Index;
       } else {
-        //this.dep2Show = null;
+        this.dep2Show = null;
         this.dep3Show = null; // dep2가 비활성화되면 dep3도 함께 비활성화
       }
     },
@@ -112,7 +90,7 @@ export default {
         this.dep3Show = null;
       }
     },
-  }
+  },
 }
 </script>
 
@@ -124,12 +102,12 @@ export default {
 
 .dep1{display:block;padding:10px 20px 10px;height:100%;}
 .dep1.active{background:#eee;color:#80c342;}
-.dep2{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px;}
+.dep2{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px 0;}
 .dep2.active{display:block;}
 .dep2 a:hover{color:#80c342;}
-.dep2 > li{padding:6px 0;}
-.dep3{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px;}
+.dep2 li > a{display:block;padding:10px 20px;}
+.dep3{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px 0;}
 .dep3.active{display:block;color:#000;}
 .dep3 a:hover{color:#80c342;}
-.dep3 > li{padding:6px 0;}
+.dep3 li > a{display:block;padding:10px 20px;}
 </style>
