@@ -99,7 +99,7 @@ export default {
         this.depShow = dep1Index;
         this.dep2Show = dep2Index;
       } else {
-        //this.dep2Show = null;
+        this.dep2Show = null;
         this.dep3Show = null; // dep2가 비활성화되면 dep3도 함께 비활성화
       }
     },
@@ -124,12 +124,12 @@ export default {
 
 .dep1{display:block;padding:10px 20px 10px;height:100%;}
 .dep1.active{background:#eee;color:#80c342;}
-.dep2{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px;}
+.dep2{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px 0;}
 .dep2.active{display:block;}
 .dep2 a:hover{color:#80c342;}
-.dep2 > li{padding:6px 0;}
-.dep3{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px;}
+.dep2 li > a{display:block;padding:10px 20px;}
+.dep3{display:none;position:absolute;top:1px;left:210px;width:214px;height:100%;background:#eee;border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:20px 0;}
 .dep3.active{display:block;color:#000;}
 .dep3 a:hover{color:#80c342;}
-.dep3 > li{padding:6px 0;}
+.dep3 li > a{display:block;padding:10px 20px;}
 </style>

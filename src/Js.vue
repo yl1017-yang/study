@@ -162,7 +162,7 @@ export default {
   },
 
   setup() {
-    const value  = '노르웨이 기획전'    
+    const value  = '노르웨이 기획전 - Sustainable 페이지 샘플' 
     const scriptInput  = { value }
     console.log(scriptInput.value)
     return { scriptInput }

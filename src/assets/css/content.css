@@ -26,3 +26,4 @@
 .lnb-wrap .lnb-list .active{color: #80c342;}
 
 .content{flex:1;}
+.content > .title{color: #000;font-size: 28px;font-weight: 500;margin-bottom: 20px;}

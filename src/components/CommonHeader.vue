@@ -56,6 +56,7 @@ export default {
       dep2Show: null,
       dep3Show: null,
       
+      // categoryAll: [],
       categoryAll: category[0].category
     }
   },
@@ -63,7 +64,8 @@ export default {
   methods : {
     searchClick() {
       console.log(this.searchInput);
-      this.searchInput = "클릭해서 나오는 문구";
+      this.searchInput = "나와 지구를 위한 바른먹거리 마켓, #풀무원";
+      
     }, 
     categoryClick() {
       this.categoryShow = !this.categoryShow;
@@ -90,6 +92,9 @@ export default {
         this.dep3Show = null;
       }
     },
+    mounted() {
+      // this.categoryAll = [...this.category[0].category];
+    }
   },
 }
 </script>
