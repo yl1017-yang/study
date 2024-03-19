@@ -25,18 +25,18 @@
 
     <section class="content">
       <h2 class="title">
-        취소/반품 조회
+        취소/반품 조회 ({{ todayDate() }})  {{ startDate }}
       </h2>
       <div class="order-search-wrap">
         <div class="order-search">
           <h3 class="title">조회기간</h3>
           <div class="date-box">
-            <input type="text" name="startDate" readonly="readonly" class="date-input" v-model="currentDate" value="{{currentDate()}}">
+            <input type="text" name="startDate" readonly="readonly" class="date-input" v-model="startDate">
             <button type="button" class="btn-date">달력열기</button>
           </div>
           <span class="tilde">~</span>
           <div class="date-box">
-            <input type="text" name="endDate" readonly="readonly" class="date-input">
+            <input type="text" name="endDate" readonly="readonly" class="date-input" v-model="endDate">
             <button type="button" class="btn-date">달력열기</button>
           </div>
           <div class="months-box">
@@ -57,33 +57,34 @@ export default {
 
   data() {
     return {
-      // currentDate: null,
-      // year: null,
-      // month: null,
-      // day: null,
+      startDate: null,
+      endDate: null,
     };
   },
 
   methods : {
-    currentDate() {
-      // const today = new Date();
-      // const year = today.getFullYear();
-      // const month = today.getMonth() + 1;
-      // console.log(today);
+    todayDate() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = ('0' + (today.getMonth() + 1)).slice(-2);
+      const day = ('0' + today.getDate()).slice(-2);
+      const todayCurrent = `${year}-${month}-${day}`;
 
-      // return dateTime;
+      // const monthAgo = new Date(today.setDate(today.getMonth() + 3 ));
+      // console.log('오늘날짜 :' + todayDate + ' 3개월 :' + monthAgo);
+
+      return todayCurrent;
+    },
+    
+    monthDate() {
+      this.todayDate()
     }
   },
 
   mounted() {
-    this.currentDate()
-
-    // this.currentDate = new Date().toLocaleDateString();
-    // this.year = this.currentDate.getFullYear();
-    // this.month = ('0' + (this.currentDate.getMonth() + 1).slice(-2));
-    // this.day = ('0' + this.currentDate.getDate()).slice(-2);
-
-    // console.log(this.currentDate);
+    // this.startDate = new Date().toLocaleDateString("ko-KR");
+    this.startDate = this.todayDate();
+    this.endDate = this.monthDate();
   },
 }
 </script>
