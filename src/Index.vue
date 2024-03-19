@@ -63,15 +63,15 @@ export default {
   },
 
   methods : {
-    todayDate() {
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = ('0' + (today.getMonth() + 1)).slice(-2);
-      const day = ('0' + today.getDate()).slice(-2);
-      const todayCurrent = `${year}-${month}-${day}`;
+    // todayDate() {
+    //   const today = new Date();
+    //   const year = today.getFullYear();
+    //   const month = ('0' + (today.getMonth() + 1)).slice(-2);
+    //   const day = ('0' + today.getDate()).slice(-2);
+    //   const todayCurrent = `${year}-${month}-${day}`;
 
-      return todayCurrent;
-    },
+    //   return todayCurrent;
+    // },
 
     setMonthFilter(months) {
       const currentDate = new Date();
