@@ -40,9 +40,9 @@
             <button type="button" class="btn-date">달력열기</button>
           </div>
           <div class="months-box">
-            <button type="button" value="3" class="btn-months active">3개월</button>
-            <button type="button" value="6" class="btn-months">6개월</button>
-            <button type="button" value="12" class="btn-months">12개월</button>
+            <button type="button" value="3" class="btn-months active" @click="setMonthFilter(3)">3개월</button>
+            <button type="button" value="6" class="btn-months" @click="setMonthFilter(6)">6개월</button>
+            <button type="button" value="12" class="btn-months" @click="setMonthFilter(12)">12개월</button>
           </div>
         </div>
         <button type="button" class="btn-order-search">조회하기</button>
@@ -57,8 +57,8 @@ export default {
 
   data() {
     return {
-      startDate: null,
-      endDate: null,
+      startDate: '',
+      endDate: ''
     };
   },
 
@@ -70,22 +70,24 @@ export default {
       const day = ('0' + today.getDate()).slice(-2);
       const todayCurrent = `${year}-${month}-${day}`;
 
-      // const monthAgo = new Date(today.setDate(today.getMonth() + 3 ));
-      // console.log('오늘날짜 :' + todayDate + ' 3개월 :' + monthAgo);
-
       return todayCurrent;
     },
 
-    monthDate() {
-      
+    setMonthFilter(months) {
+      const currentDate = new Date();
+      this.endDate = currentDate.toISOString().slice(0, 10);
+
+      const startDate = new Date();
+      startDate.setMonth(startDate.getMonth() - months);
+      this.startDate = startDate.toISOString().slice(0, 10);
     }
   },
 
   mounted() {
-    this.startDate = this.todayDate();
-    this.endDate = this.monthDate();
+    // this.startDate = this.setMonthFilter();
+    // this.endDate = this.monthDate();
     // this.startDate = new Date().toLocaleDateString("ko-KR");
-    // this.endDate = new Date().toISOString();
+    // this.endDate = new Date().toDateString();
   },
 }
 </script>
