@@ -75,16 +75,17 @@ export default {
 
       return todayCurrent;
     },
-    
+
     monthDate() {
-      this.todayDate()
+      
     }
   },
 
   mounted() {
-    // this.startDate = new Date().toLocaleDateString("ko-KR");
     this.startDate = this.todayDate();
     this.endDate = this.monthDate();
+    // this.startDate = new Date().toLocaleDateString("ko-KR");
+    // this.endDate = new Date().toISOString();
   },
 }
 </script>
