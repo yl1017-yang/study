@@ -25,7 +25,7 @@
 
     <section class="content">
       <h2 class="title">
-        취소/반품 조회 ({{ todayDate() }})  {{ startDate }}
+        취소/반품 조회 ({{ todayDate() }})
       </h2>
       <div class="order-search-wrap">
         <div class="order-search">
@@ -63,15 +63,15 @@ export default {
   },
 
   methods : {
-    // todayDate() {
-    //   const today = new Date();
-    //   const year = today.getFullYear();
-    //   const month = ('0' + (today.getMonth() + 1)).slice(-2);
-    //   const day = ('0' + today.getDate()).slice(-2);
-    //   const todayCurrent = `${year}-${month}-${day}`;
+    todayDate() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = ('0' + (today.getMonth() + 1)).slice(-2);
+      const day = ('0' + today.getDate()).slice(-2);
+      const todayCurrent = `${year}-${month}-${day}`;
 
-    //   return todayCurrent;
-    // },
+      return todayCurrent;
+    },
 
     setMonthFilter(months) {
       const currentDate = new Date();
