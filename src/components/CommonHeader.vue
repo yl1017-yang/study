@@ -6,7 +6,7 @@
       </h1>
       <div class="search">
         <input type="text" v-model="searchInput" placeholder="#풀무원, 나와 지구를 위한 바른먹거리 마켓" maxlength="30">
-        <button @click="searchClick()" type="button" class="btn-search"><span class="blind">검색</span></button>
+        <button type="button" class="btn-search" @click="searchClick('나와 지구를 위한 바른먹거리 마켓, #풀무원')"><span class="blind">검색</span></button>
       </div>
       <router-link to="/study/js" class="btn-link">자바스크립트 테스트</router-link>
     </div>
@@ -16,13 +16,13 @@
         <div class="category-list" :class="{ active: categoryShow }">
           <ul>
             <li v-for="(item, dep1Index) in categoryAll" :key="dep1Index" @mouseenter="depOver(dep1Index)" @mouseleave="depOver(null)">
-              <a href="#none" class="dep1" :class="{ active: depShow === dep1Index }">{{ item.categoryName }}</a>
+              <a :href="`https://shop.pulmuone.co.kr/shop/goodsList?itemId=${item.ilCategoryId}`" class="dep1" :class="{ active: depShow === dep1Index }">{{ item.categoryName }}</a>
               <ul class="dep2" :class="{ active: depShow === dep1Index }">
                 <li v-for="(dep2Item, dep2Index) in item.subCategoryList" :key="dep2Index" @mouseenter="dep2Over(dep1Index, dep2Index)" @mouseleave="dep2Over(null, null)">
-                  <a href="#none">{{ dep2Item.categoryName }}</a>
+                  <a :href="`https://shop.pulmuone.co.kr/shop/goodsList?itemId=${dep2Item.ilCategoryId}`">{{ dep2Item.categoryName }}</a>
                   <ul class="dep3" :class="{ active: dep2Show === dep2Index && depShow === dep1Index }">
                     <li v-for="(dep3Item, dep3Index) in dep2Item.subCategoryList" :key="dep3Index" @mouseenter="dep3Over(dep1Index, dep2Index, dep3Index)" @mouseleave="dep3Over(null, null, null)">
-                      <a>{{ dep3Item.categoryName }}</a>
+                      <a :href="`https://shop.pulmuone.co.kr/shop/goodsList?itemId=${dep3Item.ilCategoryId}`">{{ dep3Item.categoryName }}</a>
                     </li>
                   </ul>
                 </li>
@@ -32,12 +32,12 @@
         </div>
       </div>
       <nav>
-        <a href="#none" class="nav_list ">베스트</a>
-        <a href="#none" class="nav_list ">일일배송</a>
-        <a href="#none" class="nav_list ">매장배송</a>
-        <a href="#none" class="nav_list ">지금세일</a>
-        <a href="#none" class="nav_list ">신상품</a>
-        <a href="#none" class="nav_list ">기획전/이벤트</a>
+        <a href="/study/" class="nav_list ">베스트</a>
+        <a href="/study/" class="nav_list ">일일배송</a>
+        <a href="/study/" class="nav_list ">매장배송</a>
+        <a href="/study/" class="nav_list ">지금세일</a>
+        <a href="/study/" class="nav_list ">신상품</a>
+        <a href="/study/" class="nav_list ">기획전/이벤트</a>
       </nav>
     </div>
   </header>
@@ -56,19 +56,32 @@ export default {
       dep2Show: null,
       dep3Show: null,
       
-      // categoryAll: [],
       categoryAll: category[0].category
     }
   },
 
+  mounted() {
+      // this.categoryAll = [...this.category[0].category];
+  },
+
   methods : {
-    searchClick() {
+    searchClick(inputTxt) {
       console.log(this.searchInput);
-      this.searchInput = "나와 지구를 위한 바른먹거리 마켓, #풀무원";
-      
+      this.searchInput = inputTxt;
     }, 
     categoryClick() {
       this.categoryShow = !this.categoryShow;
+
+      if (this.categoryShow) {
+        document.body.addEventListener('click', this.categoryClickClose)
+      } else {
+        document.body.removeEventListener('click', this.categoryClickClose)
+      }
+    },
+    categoryClickClose(e) {
+      if (!e.target.closest('.btn-category')) {
+        this.categoryShow = false;
+      }
     },
     depOver(dep1Index) {
       this.depShow = dep1Index;
@@ -80,7 +93,7 @@ export default {
         this.dep2Show = dep2Index;
       } else {
         this.dep2Show = null;
-        this.dep3Show = null; // dep2가 비활성화되면 dep3도 함께 비활성화
+        this.dep3Show = null;
       }
     },
     dep3Over(dep1Index, dep2Index, dep3Index) {
@@ -91,9 +104,6 @@ export default {
       } else {
         this.dep3Show = null;
       }
-    },
-    mounted() {
-      // this.categoryAll = [...this.category[0].category];
     }
   },
 }
