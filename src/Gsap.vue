@@ -15,7 +15,7 @@
             <div class="evt_section">
               <h1><img src="https://shoppulmuone.cdn.ntruss.com/MALL/planshop/202304/0417_norwegian_salmon/img/p_evt_tit.jpg" alt="" /></h1>
               <div class="motion_box">
-                <p class="motion">GSAP 테스트</p>
+                <p class="motion">스크립트 테스트</p>
                 <h3 class="motion delay02">노르웨이 연어는<br>언제나 옳다<span>.</span></h3>
               </div>
             </div>
@@ -23,19 +23,37 @@
           <div class="evt_wide_wrap p_evt_sec1">
             <div class="evt_section">
               <img src="https://cdn.pixabay.com/photo/2023/08/18/15/02/cat-8198720_960_720.jpg" alt="" />
+              <div class="motion_box">
+                <h3 class="motion">fixed 타이틀 1111</h3>
+                <p class="motion delay01">
+                  fixex 내용
+                </p>
+              </div>
             </div>
           </div>
           <div class="evt_wide_wrap p_evt_sec2">
             <div class="evt_section">
               <img src="https://cdn.pixabay.com/photo/2020/07/10/04/06/pink-algae-5389441_960_720.jpg" alt="" />
+              <div class="motion_box">
+                <h3 class="motion">fixed 타이틀 2222 </h3>
+                <p class="motion delay01">
+                  fixex 내용
+                </p>
+              </div>
             </div>
           </div>
           <div class="evt_wide_wrap p_evt_sec3">
             <div class="evt_section">
               <img src="https://cdn.pixabay.com/photo/2024/02/26/09/17/synthetic-8597464_960_720.jpg" alt="" />
+              <div class="motion_box">
+                <h3 class="motion">fixed 타이틀 3333</h3>
+                <p class="motion delay01">
+                  fixex 내용
+                </p>
+              </div>
             </div>
           </div>
-          <div class="evt_wide_wrap p_evt_sec2">
+          <div class="evt_wide_wrap p_evt_sec4">
             <div class="evt_section">
               <img src="https://shoppulmuone.cdn.ntruss.com/MALL/planshop/202304/0417_norwegian_salmon/img/p_evt_sec2.jpg" alt="" />
               <div class="motion_box">
@@ -53,12 +71,12 @@
               </div>
             </div>
           </div>
-          <div class="evt_wide_wrap p_evt_sec3">
+          <div class="evt_wide_wrap p_evt_sec5">
             <div class="evt_section">
-              <img src="https://shoppulmuone.cdn.ntruss.com/MALL/planshop/202304/0417_norwegian_salmon/img/p_evt_sec3.jpg" alt="">
+              <img src="https://shoppulmuone.cdn.ntruss.com/MALL/planshop/202304/0417_norwegian_salmon/img/p_evt_sec3.jpg" alt="">              
             </div>
           </div>
-          <div class="evt_wide_wrap p_evt_sec4">
+          <div class="evt_wide_wrap p_evt_sec6">
             <div class="evt_section">
               <img src="https://shoppulmuone.cdn.ntruss.com/MALL/planshop/202304/0417_norwegian_salmon/img/p_evt_sec4.jpg" alt="">
               <div class="motion_box">
@@ -87,7 +105,7 @@
               </div>
             </div>
           </div>
-          <div class="evt_wide_wrap p_evt_sec5">
+          <div class="evt_wide_wrap p_evt_sec7">
             <div class="evt_section">
               <img src="https://shoppulmuone.cdn.ntruss.com/MALL/planshop/202304/0417_norwegian_salmon/img/p_evt_sec5.jpg" alt="">
               <div class="motion_box">
@@ -108,7 +126,7 @@
               </div>
             </div>
           </div>
-          <div class="evt_wide_wrap p_evt_sec6">
+          <div class="evt_wide_wrap p_evt_sec8">
             <div class="evt_section">
               <img src="https://shoppulmuone.cdn.ntruss.com/MALL/planshop/202304/0417_norwegian_salmon/img/p_evt_sec6.jpg" alt="">
               <div class="motion_box">
@@ -132,7 +150,7 @@
               </div>
             </div>
           </div>
-          <div class="evt_wide_wrap p_evt_sec7">
+          <div class="evt_wide_wrap p_evt_sec9">
             <div class="evt_section">
               <img src="https://shoppulmuone.cdn.ntruss.com/MALL/planshop/202304/0417_norwegian_salmon/img/p_evt_sec7.jpg" alt="">
             </div>
@@ -203,10 +221,15 @@ export default {
 
 <style scoped>
 /* wide common */
-.event, .event_wrap {position: relative;overflow: hidden;}
-.event_wrap .evt_wide_wrap{position:relative;min-width:1168px;max-width:1920px;margin:0 auto;text-align:left}
-.event_wrap .evt_section,.event_wrap .evt_notice{position:relative;margin:0 auto}
-.event_wrap .evt_section img{display:block;max-width:none;vertical-align:top}
+.event_wrap .evt_wide_wrap{position:relative;max-width:1920px;margin:0 auto;text-align:left}
+.event_wrap .evt_section,.event_wrap .evt_notice{position:relative;width:1168px;margin:0 auto}
+.event_wrap .evt_section img{max-width:none;margin:0 -376px auto;vertical-align:top}
+
+
+/* fixed 모션 */
+.event_wrap :is(.p_evt_sec1, .p_evt_sec2, .p_evt_sec3){position:sticky;top:0;}
+.event_wrap :is(.p_evt_sec1, .p_evt_sec2, .p_evt_sec3) img{margin:0;width:1168px;}
+.event_wrap :is(.p_evt_sec1, .p_evt_sec2, .p_evt_sec3) .motion_box{top:200px;left:100px}
 
 /* 상단모션 */
 .event_wrap .motion_box{position:absolute;top:0;left:0;color:#fff}
@@ -217,16 +240,16 @@ export default {
 .event_wrap .motion_box p{font-size:22px;line-height:1.8;margin-bottom:40px;letter-spacing:-1.2px}
 
 .event_wrap .p_evt_tit .motion_box{width:100%;top:380px;left:0;text-align:center}
-.event_wrap .p_evt_sec2 .motion_box{top:115px;left:444px}
-.event_wrap .p_evt_sec2 .motion_box span{position:absolute;top:6px;left:127px}
-.event_wrap .p_evt_sec4 .motion_box{top:230px;left:100px}
-.event_wrap .p_evt_sec4 .motion_box h3{font-size:40px;margin-bottom:47px}
-.event_wrap .p_evt_sec4 .motion_box p{font-size:20px;line-height:2;margin-bottom:40px}
-.event_wrap .p_evt_sec5 .motion_box{top:236px;left:570px}
-.event_wrap .p_evt_sec6 .motion_box{top:188px;left:0;color:#333}
-.event_wrap .p_evt_sec6 .motion_box h3{margin-bottom:50px}
-.event_wrap .p_evt_sec7 .motion_box{top:320px;left:620px}
-.event_wrap .p_evt_sec7 .motion_box h3{margin-bottom:40px}
+.event_wrap .p_evt_sec4 .motion_box{top:115px;left:444px}
+.event_wrap .p_evt_sec4 .motion_box span{position:absolute;top:6px;left:127px}
+.event_wrap .p_evt_sec6 .motion_box{top:230px;left:100px}
+.event_wrap .p_evt_sec6 .motion_box h3{font-size:40px;margin-bottom:47px}
+.event_wrap .p_evt_sec6 .motion_box p{font-size:20px;line-height:2;margin-bottom:40px}
+.event_wrap .p_evt_sec7 .motion_box{top:236px;left:570px}
+.event_wrap .p_evt_sec8 .motion_box{top:188px;left:0;color:#333}
+.event_wrap .p_evt_sec8 .motion_box h3{margin-bottom:50px}
+.event_wrap .p_evt_sec9 .motion_box{top:320px;left:620px}
+.event_wrap .p_evt_sec9 .motion_box h3{margin-bottom:40px}
 
 .motion{opacity:0}
 .motion.active{opacity:1;animation:silde-top 0.6s ease-in-out both}

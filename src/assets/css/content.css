@@ -16,7 +16,7 @@
 .header-wrap .hedaer-nav .btn-category{display:flex;align-items:center;font-size:16px;font-weight:700;color:#000;margin-right:50px;}
 .header-wrap .hedaer-nav .btn-category::before{content:"";display:inline-block;width: 36px;height: 36px;margin-right:6px;background: url(../images/menu-line.svg) no-repeat 50%;vertical-align: bottom;}
 
-.footer-wrap{background:#eee;min-height:200px;text-align:center;}
+.footer-wrap{background:#eee;min-height:500px;text-align:center;}
 
 .container{display:flex;margin-top:60px;min-height:600px;}
 .lnb-wrap{width:176px;margin-right:34px;}
