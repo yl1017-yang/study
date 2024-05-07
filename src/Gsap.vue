@@ -22,7 +22,17 @@
           </div>
           <div class="evt_wide_wrap p_evt_sec1">
             <div class="evt_section">
-              <img src="https://shoppulmuone.cdn.ntruss.com/MALL/planshop/202304/0417_norwegian_salmon/img/p_evt_sec1.jpg" alt="" />
+              <img src="https://cdn.pixabay.com/photo/2023/08/18/15/02/cat-8198720_960_720.jpg" alt="" />
+            </div>
+          </div>
+          <div class="evt_wide_wrap p_evt_sec2">
+            <div class="evt_section">
+              <img src="https://cdn.pixabay.com/photo/2020/07/10/04/06/pink-algae-5389441_960_720.jpg" alt="" />
+            </div>
+          </div>
+          <div class="evt_wide_wrap p_evt_sec3">
+            <div class="evt_section">
+              <img src="https://cdn.pixabay.com/photo/2024/02/26/09/17/synthetic-8597464_960_720.jpg" alt="" />
             </div>
           </div>
           <div class="evt_wide_wrap p_evt_sec2">
@@ -46,7 +56,6 @@
           <div class="evt_wide_wrap p_evt_sec3">
             <div class="evt_section">
               <img src="https://shoppulmuone.cdn.ntruss.com/MALL/planshop/202304/0417_norwegian_salmon/img/p_evt_sec3.jpg" alt="">
-              <a href="https://shop.pulmuone.co.kr/shop/goodsView?goods=2586" class="btn btn_lnk1"><span class="blind">ASC 생연어 슬라이스 (200g) 구매하러 가기</span></a>
             </div>
           </div>
           <div class="evt_wide_wrap p_evt_sec4">
@@ -194,14 +203,10 @@ export default {
 
 <style scoped>
 /* wide common */
-.event_wrap .evt_wide_wrap{position:relative;max-width:1920px;margin:0 auto;text-align:left}
-.event_wrap .evt_section,.event_wrap .evt_notice{position:relative;width:1168px;margin:0 auto}
-.event_wrap .evt_section img{max-width:none;margin:0 -376px auto;vertical-align:top}
-
-/* button */
-.event_wrap .btn{position:absolute;border:0;padding:0}
-.event_wrap .btn_lnk1{top:0;left:40px;right:40px;bottom:0}
-
+.event, .event_wrap {position: relative;overflow: hidden;}
+.event_wrap .evt_wide_wrap{position:relative;min-width:1168px;max-width:1920px;margin:0 auto;text-align:left}
+.event_wrap .evt_section,.event_wrap .evt_notice{position:relative;margin:0 auto}
+.event_wrap .evt_section img{display:block;max-width:none;vertical-align:top}
 
 /* 상단모션 */
 .event_wrap .motion_box{position:absolute;top:0;left:0;color:#fff}
@@ -223,4 +228,27 @@ export default {
 .event_wrap .p_evt_sec7 .motion_box{top:320px;left:620px}
 .event_wrap .p_evt_sec7 .motion_box h3{margin-bottom:40px}
 
+.motion{opacity:0}
+.motion.active{opacity:1;animation:silde-top 0.6s ease-in-out both}
+
+@keyframes silde-top {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(0, 80px);
+            transform: translate(0, 80px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+.delay01.active{animation-delay:0.1s}
+.delay02.active{animation-delay:0.2s}
+.delay03.active{animation-delay:0.3s}
+.delay04.active{animation-delay:0.4s}
+.delay05.active{animation-delay:0.5s}
+.delay06.active{animation-delay:0.6s}
+.delay08.active{animation-delay:0.8s}
 </style>
