@@ -9,6 +9,7 @@
         <button type="button" class="btn-search" @click="searchClick('나와 지구를 위한 바른먹거리 마켓, #풀무원')"><span class="blind">검색</span></button>
       </div>
       <router-link to="/study/js" class="btn-link">자바스크립트 테스트</router-link>
+      <router-link to="/study/Gsap" class="btn-link">Gsap 테스트</router-link>
     </div>
     <div class="hedaer-nav">
       <div class="category">
