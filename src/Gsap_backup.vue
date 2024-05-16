@@ -1,7 +1,7 @@
 <template>
   <main class="container">
     <section class="content">
-      <div>Sustainable 페이지 - GSAP</div>
+        {{ scriptInput.value }}
 
 
       <div class="sustainable_wrap">
@@ -10,22 +10,21 @@
           <div class="inner">
             <div class="img_bg">
               <img src="https://d3phaj0sisr2ct.cloudfront.net/site/images/tools/aitools-background-01.jpg" alt="">
-              <!-- <img src="https://cdn.pixabay.com/photo/2024/05/12/12/34/ai-generated-8756835_1280.jpg" alt=""> -->
             </div>
             <div class="text_con1">
               <h1>#Sustainable Lifestyle</h1>
               <p>나와 지구를 위한 바른먹거리 마켓,<br>사람과 자연을 함께 사랑하는 풀무원이 권하는 지혜로운 라이프 스타일</p>
             </div>
             <div class="img_con">
-                <video autoplay="" muted="" loop="" playsinline="">
-                  <!-- <source src="https://d3phaj0sisr2ct.cloudfront.net/site/videos/tools/Header_1.1+1.webm" type="video/webm">
-                  <source src="https://d3phaj0sisr2ct.cloudfront.net/site/videos/tools/Header_1.1+1.mp4" type="video/mp4"> -->
-                  <source src="https://pulmuonevideo.com/230202.mp4" type="video/mp4">
+                <!-- <img width="1830" height="860" src="https://p645224.mittwaldserver.info/wp-content/uploads/2023/09/leistungen-planung-waermebild.jpg" alt="">-->
+                <video autoplay="" muted="" loop="" playsinline="" poster="https://d3phaj0sisr2ct.cloudfront.net/site/videos/tools/Header_1.1+1.jpg">
+                  <source src="https://d3phaj0sisr2ct.cloudfront.net/site/videos/tools/Header_1.1+1.webm" type="video/webm">
+                  <source src="https://d3phaj0sisr2ct.cloudfront.net/site/videos/tools/Header_1.1+1.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="text_con2">
-              <h2>사회책임경영</h2>
-              <p>‘이웃사랑’과 ‘생명존중’ 정신을 바탕으로 <br>로하스 생활(LOHAS Living)을 구현해 나갑니다.</p>
+              <h2>Go from ideation <br> to execution in seconds.</h2>
+              <p>With Text to Image and Text to Video, it’s easier than ever to explore ideas<br> visually instead of in the abstract.</p>
             </div>
           </div>
         </section>
@@ -100,7 +99,7 @@
         </section>
 
 
-        <section class="section04">
+        <section class="section05">
           <h1>네번째 영역</h1>
         </section>
 
@@ -113,57 +112,29 @@
 <script>
 export default {
   name: 'AppGsap',
+  
 
-  // created() {
-  //   const gsapScript = document.createElement('script');
-  //   gsapScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js";
-  //   gsapScript.type = 'text/javascript';
-  //   gsapScript.async = true;
-  //   gsapScript.onload = () => {
-  //     const scrollTriggerScript = document.createElement('script');
-  //     scrollTriggerScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js";
-  //     scrollTriggerScript.type = 'text/javascript';
-  //     scrollTriggerScript.async = true;
-  //     scrollTriggerScript.onload = () => {
-  //       this.runAnimations();
-  //     };
-  //     document.head.appendChild(scrollTriggerScript);
-  //   };
-  //   document.head.appendChild(gsapScript);
-  // },
+  setup() {
+    const value  = 'Sustainable 페이지 - GSAP' 
+    const scriptInput  = { value }
+    console.log(scriptInput.value)
+    return { scriptInput }
+  },
 
-  created() {
-    // 라우터 사용시 한번만 실행
-    this.$router.beforeEach((to, from, next) => {
-      if (from.name === this.$route.name && to.name !== this.$route.name) {
-        this.removeScripts();
-      }
-      next();
-    });
-
-    // 스크립트 로딩
+  mounted() {
+    // GSAP 및 ScrollTrigger 스크립트를 동적으로 추가
     const gsapScript = document.createElement('script');
     gsapScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js";
     gsapScript.type = 'text/javascript';
-    gsapScript.async = true;
-    gsapScript.onload = () => {
-      const scrollTriggerScript = document.createElement('script');
-      scrollTriggerScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js";
-      scrollTriggerScript.type = 'text/javascript';
-      scrollTriggerScript.async = true;
-      scrollTriggerScript.onload = () => {
-        this.runAnimations();
-      };
-      document.head.appendChild(scrollTriggerScript);
-    };
     document.head.appendChild(gsapScript);
-  },
 
-  methods: {
-    runAnimations() {
-      const gsap = window.gsap;
-      const ScrollTrigger = window.ScrollTrigger;
+    const scrollTriggerScript = document.createElement('script');
+    scrollTriggerScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js";
+    scrollTriggerScript.type = 'text/javascript';
+    document.head.appendChild(scrollTriggerScript);
 
+    gsapScript.onload = scrollTriggerScript.onload = () => {
+      // GSAP 및 ScrollTrigger 로딩 완료 후 애니메이션 코드 실행
       gsap.registerPlugin(ScrollTrigger);
 
       gsap.to(".text_con1", {
@@ -172,7 +143,7 @@ export default {
           start: "0% 0%",
           end: "100% 50%",
           scrub: 1,
-          markers: false,
+          markers: true,
         },
         top: "-100%",
       });
@@ -183,9 +154,9 @@ export default {
           start: "0% 0%",
           end: "100% 100%",
           scrub: 1,
-          markers: false,
+          markers: true,
         },
-        top: "35%",
+        top: "30%",
         duration: 1
       });
 
@@ -197,7 +168,7 @@ export default {
             start: "0% 0%",
             end: "100% 0%",
             scrub: 0.5,
-            markers: false,
+            markers: true,
           },
           scale: 1.2,
           opacity: 0,
@@ -215,7 +186,7 @@ export default {
             start: "0% 0%",
             end: "bottom top",
             scrub: 0.5,
-            markers: false,
+            markers: true,
           },
           y: -100,
         }
@@ -227,7 +198,7 @@ export default {
           start: "0% 30%",
           end: "100% 80%",
           scrub: 1,
-          markers: false,
+          markers: true,
         },
         duration: 1,
         y: 100
@@ -239,58 +210,51 @@ export default {
           start: "0% 30%",
           end: "100% 80%",
           scrub: 1,
-          markers: false,
+          markers: true,
         },
         y: -100
       });
 
-      let flow1 = gsap.utils.toArray(".flow1 .panel");
-      gsap.to(flow1, {
+      gsap.to(".flow1 .panel", {
         xPercent: -100 * (flow1.length - 1),
         ease: "none",
         scrollTrigger: {
           trigger: ".section03",
-          pin: false,
+          pin: true,
           scrub: 1,
           snap: 1 / (flow1.length - 1),
           end: () => "+=" + document.querySelector(".section03").offsetWidth
         }
       });
-    },
+    };
+  },
 
-    removeScripts() {
-      // 스크립트 제거 코드
-      const scripts = document.querySelectorAll('script[src^="https://cdnjs.cloudflare.com/ajax/libs/gsap"]');
-      scripts.forEach(script => {
-        script.remove();
-      });
-    }
-
+  methods: {
   }
-};
+
+}
 </script>
 
 
 <style scoped>
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
-.content{position:relative;max-width:1920px;margin:0 -376px auto;overflow:hidden;}
+*{margin:0;padding:0;border:0;list-style:none;line-height:1.3;font-size:28px;box-sizing: border-box;font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;}
+h1{font-size:60px;}
+h2{font-size:40px;margin-bottom:5px;}
 
-.sustainable_wrap *{margin:0;padding:0;border:0;list-style:none;line-height:1.3;font-size:28px;box-sizing: border-box;font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;}
-.sustainable_wrap h1{font-size:60px;}
-.sustainable_wrap h2{font-size:40px;margin-bottom:5px;}
+.sustainable_wrap{max-width:1920px;min-width:1168px;overflow: hidden; -webkit-overflow-scrolling: touch; overflow-scrolling: touch;}
 
-.sustainable_wrap{position:relative;}
-
-.section01 {  position: relative; padding-bottom:100px; height:100%; }  /* aspect-ratio: 2560/2880; background:#eee url(https://d3phaj0sisr2ct.cloudfront.net/site/images/tools/aitools-background-01.jpg) 100% 100% / cover no-repeat; */
+.section01 {  position: relative; padding-bottom:100px; overflow: hidden;}  /* aspect-ratio: 2560/2880; background:#eee url(https://d3phaj0sisr2ct.cloudfront.net/site/images/tools/aitools-background-01.jpg) 100% 100% / cover no-repeat; */
 .section01 .inner { position: relative; width: 100%; height: 100%; overflow: hidden;}
+/* .section01 .inner .img_con { position: sticky; top: 0; z-index: 1; margin: 0 auto; height: auto; overflow: hidden; transform: scale(.6); } */
 .section01 .text_con1 { position: fixed; top:0;left:0;width: 100%;height:100%; text-align: center;color:#fff;}
 .section01 .text_con1 > h1 {margin-top:100px;}
-.section01 .img_con { position: relative;  display: flex; flex-direction: column; width: 1400px; aspect-ratio: 1830/880; overflow: hidden; z-index: 0; margin:200px auto 0;} /* aspect-ratio: 2560/1226; */
+.section01 .img_con { position: relative;  display: flex; flex-direction: column; width: 1400px; aspect-ratio: 1830/860; overflow: hidden; z-index: 0; margin:250px auto 0;} /* aspect-ratio: 2560/1226; */
 .section01 .img_con video { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: auto; transition: transform 0.2s ease-in-out; }
-.section01 .text_con2 { position: relative;width:1000px;margin:-50px auto 0;}
-.section01 .img_bg { position: absolute;top:0;left:0;width:100%;height:100%;}
-.section01 .img_bg img{width:100%;height:100%;}
+.section01 .text_con2 { position: relative;width:1000px;margin:-50px 0 0 50px;}
+.section01 .img_bg { position: absolute;top:0;left:0;right:0;height:100%;}
+.section01 .img_bg img{width:100%;height:100%}
 
 .section02 { position: relative; background: #ddd; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .section02 .inner{width:1000px;margin:0 auto;display:flex;justify-content: space-between;}
@@ -305,5 +269,5 @@ export default {
 .row_img .panel{flex: 1 1;height:320px;margin:.25rem;aspect-ratio: 16 / 9;}
 .row_img .panel video{max-width:100%;width:100%;height:100%;object-fit:cover;border-radius:.375rem;overflow:hidden;}
 
-.section04 { position: relative;background:seagreen; height: 100vh; overflow:hidden; display: flex;}
+.section04 { position: relative;background:#ddd; height: 100vh; overflow:hidden; display: flex;}
 </style>
