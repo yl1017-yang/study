@@ -235,11 +235,11 @@ export default {
 
 /* 상단모션 */
 .event_wrap .motion_box{position:absolute;top:0;left:0;color:#fff}
-.event_wrap .p_evt_tit .motion_box p{font-size:30px;line-height:40px;letter-spacing:-1px}
-.event_wrap .p_evt_tit .motion_box h3{font-size:100px;font-weight:700;line-height:110px;letter-spacing:-4px;margin-top:14px}
+.event_wrap .p_evt_tit .motion_box p{font-size:30px;line-height:40px;}
+.event_wrap .p_evt_tit .motion_box h3{font-size:100px;font-weight:800;line-height:110px;letter-spacing:-3px;margin-top:14px}
 .event_wrap .p_evt_tit .motion_box h3 span{color:#fc6e49}
-.event_wrap .motion_box h3{font-size:60px;line-height:1.2;margin-bottom:25px;letter-spacing:-3px}
-.event_wrap .motion_box p{font-size:22px;line-height:1.8;margin-bottom:40px;letter-spacing:-1.2px}
+.event_wrap .motion_box h3{font-size:60px;line-height:1.2;font-weight:600;margin-bottom:25px;letter-spacing:-2px}
+.event_wrap .motion_box p{font-size:22px;line-height:1.8;margin-bottom:40px;letter-spacing:-1px}
 
 .event_wrap .p_evt_tit .motion_box{width:100%;top:380px;left:0;text-align:center}
 .event_wrap .p_evt_sec2 .motion_box{top:115px;left:444px}

@@ -16,7 +16,8 @@ npm run serve
 
 ### Compiles and minifies for production
 ```
-npm run build
+npm run deploy
+npm run build (사용안함)
 ```
 
 ### Lints and fixes files

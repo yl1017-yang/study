@@ -5,7 +5,7 @@
         <a href="#none">마이페이지</a>
       </h2>
       <div class="lnb-nav">
-        <h3 class="lnb-subtitle"> 마이 쇼핑 </h3>
+        <h3 class="lnb-subtitle">마이 쇼핑 </h3>
         <ul class="lnb-list">
           <li>
             <a href="#none"> 주문/배송 조회 </a>
