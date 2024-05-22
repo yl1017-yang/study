@@ -1,7 +1,7 @@
 <template>
   <main class="container">
     <section class="content">
-      <h1>Sustainable 페이지 - GSAP</h1>
+      <div>Sustainable 페이지 - GSAP</div>
 
 
       <div class="sustainable_wrap">
@@ -17,6 +17,8 @@
             </div>
             <div class="img_con">
                 <video autoplay="" muted="" loop="" playsinline="">
+                  <!-- <source src="https://d3phaj0sisr2ct.cloudfront.net/site/videos/tools/Header_1.1+1.webm" type="video/webm">
+                  <source src="https://d3phaj0sisr2ct.cloudfront.net/site/videos/tools/Header_1.1+1.mp4" type="video/mp4"> -->
                   <source src="https://pulmuonevideo.com/230202.mp4" type="video/mp4">
                 </video>
             </div>
@@ -177,29 +179,65 @@
       </div>
 
     </section>
-    <!-- 
-      vue3 gsap 적용
-      https://www.koderhq.com/tutorial/vue/animation-greensock-gsap/
-      https://velog.io/@jeong9204/vue3%EC%97%90%EC%84%9C-gsap%EC%82%AC%EC%9A%A9%EA%B8%B0
-     -->
   </main>
 </template>
 
 <script>
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
-
-
 export default {
   name: 'AppGsap',
 
-  mounted: function() {
-    this.scrollAnimation();
+  // created() {
+  //   const gsapScript = document.createElement('script');
+  //   gsapScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js";
+  //   gsapScript.type = 'text/javascript';
+  //   gsapScript.async = true;
+  //   gsapScript.onload = () => {
+  //     const scrollTriggerScript = document.createElement('script');
+  //     scrollTriggerScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js";
+  //     scrollTriggerScript.type = 'text/javascript';
+  //     scrollTriggerScript.async = true;
+  //     scrollTriggerScript.onload = () => {
+  //       this.runAnimations();
+  //     };
+  //     document.head.appendChild(scrollTriggerScript);
+  //   };
+  //   document.head.appendChild(gsapScript);
+  // },
+
+  created() {
+    // 라우터 사용시 한번만 실행
+    this.$router.beforeEach((to, from, next) => {
+      if (from.name === this.$route.name && to.name !== this.$route.name) {
+        this.removeScripts();
+      }
+      next();
+    });
+
+    // 스크립트 로딩
+    const gsapScript = document.createElement('script');
+    gsapScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js";
+    gsapScript.type = 'text/javascript';
+    gsapScript.async = true;
+    gsapScript.onload = () => {
+      const scrollTriggerScript = document.createElement('script');
+      scrollTriggerScript.src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js";
+      scrollTriggerScript.type = 'text/javascript';
+      scrollTriggerScript.async = true;
+      scrollTriggerScript.onload = () => {
+        this.runAnimations();
+      };
+      document.head.appendChild(scrollTriggerScript);
+    };
+    document.head.appendChild(gsapScript);
   },
 
+
   methods: {
-    scrollAnimation() {
+    runAnimations() {
+      const gsap = window.gsap;
+      const ScrollTrigger = window.ScrollTrigger;
+
+      gsap.registerPlugin(ScrollTrigger);
 
       //상단타이틀
       gsap.to(".text_con1", {
@@ -324,9 +362,17 @@ export default {
         });
       });
 
-    }
-  }
+    },
 
+    removeScripts() {
+      // 스크립트 제거 코드
+      const scripts = document.querySelectorAll('script[src^="https://cdnjs.cloudflare.com/ajax/libs/gsap"]');
+      scripts.forEach(script => {
+        script.remove();
+      });
+    }
+
+  }
 };
 </script>
 
