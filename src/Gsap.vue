@@ -174,6 +174,32 @@
         </section>
 
 
+        
+        <section class="section06">
+          <h1>swiper js 기능</h1>
+
+            <swiper
+              :slidesPerView="4"
+              :spaceBetween="30"
+              :centeredSlides="true"
+              :pagination="{
+                clickable: true,
+              }"
+              :modules="modules"
+              class="mySwiper"
+            >
+              <swiper-slide>Slide 1</swiper-slide>
+              <swiper-slide>Slide 2</swiper-slide>
+              <swiper-slide>Slide 3</swiper-slide>
+              <swiper-slide>Slide 4</swiper-slide>
+              <swiper-slide>Slide 5</swiper-slide>
+              <swiper-slide>Slide 6</swiper-slide>
+            </swiper>
+
+
+        </section>
+
+
       </div>
 
     </section>
@@ -181,18 +207,39 @@
       vue3 gsap 적용
       https://www.koderhq.com/tutorial/vue/animation-greensock-gsap/
       https://velog.io/@jeong9204/vue3%EC%97%90%EC%84%9C-gsap%EC%82%AC%EC%9A%A9%EA%B8%B0
+      "swiper": "^5.3.8", "vue-awesome-swiper": "^4.1.1",
+      npm i swiper@5.3.8   vue3 vue-awesome-swiper 사용할수 없음
+      https://swiperjs.com/demos
      -->
   </main>
 </template>
 
 <script>
+// gsap
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+// swiper
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
 
 export default {
   name: 'AppGsap',
+
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  setup() {
+    return {
+      modules: [Pagination],
+    };
+  },
+
+
 
   mounted: function() {
     this.scrollAnimation();
@@ -404,13 +451,14 @@ export default {
 .img-active li:nth-child(2) a:hover{left:-100%}
 .img-active li:nth-child(3) a:hover{left:-200%}
 
-
+/* 스와이퍼 vue3버젼 */
 .section06 { position: relative;background:aquamarine; padding:140px 0;overflow:hidden; }
-.section06 .inner{display:flex;flex-wrap: wrap;width:1000px;margin:0 auto;}
+/* .section06 .inner{display:flex;flex-wrap: wrap;width:1000px;margin:0 auto;} */
 
-.section06 .img1{width:40%;margin-right:20px;}
-.section06 .text1{width:55%}
-.section06 .img2{margin-top:120px;}
+.swiper { width: 100%; height: 100%; }
+.swiper-slide { height:500px; background: #fff;  display: flex; justify-content: center; align-items: center; }
+.swiper-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.swiper-pagination{position:relative;border:1px solid red}
 
 
 /* 모달팝업 */
