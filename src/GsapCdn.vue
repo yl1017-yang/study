@@ -12,7 +12,7 @@
               <img src="https://d3phaj0sisr2ct.cloudfront.net/site/images/tools/aitools-background-01.jpg" alt="">
             </div>
             <div class="text_con1">
-              <h1>#Sustainable Lifestyle</h1>
+              <h1>#Sustainable Lifestyle - CDN</h1>
               <p>나와 지구를 위한 바른먹거리 마켓,<br>사람과 자연을 함께 사랑하는 풀무원이 권하는 지혜로운 라이프 스타일</p>
             </div>
             <div class="img_con">
@@ -184,7 +184,7 @@
 
 <script>
 export default {
-  name: 'AppGsap',
+  name: 'AppGsapCdn',
 
   // created() {
   //   const gsapScript = document.createElement('script');
