@@ -6,7 +6,7 @@
 
       <div class="sustainable_wrap">
 
-        <section class="section01">
+        <section class="section01" id="badge1">
           <div class="inner">
             <div class="img_bg">
               <img src="https://d3phaj0sisr2ct.cloudfront.net/site/images/tools/aitools-background-01.jpg" alt="">
@@ -28,7 +28,7 @@
         </section>
 
 
-        <section class="section02">
+        <section class="section02" id="badge2">
           <h1>
             스크롤시 교차되는 이미지 
             <a href="#modal_view1" class="btn_open">자세히 보기 1</a>
@@ -59,7 +59,7 @@
         </div>
 
 
-        <section class="section03">
+        <section class="section03" id="badge3">
           <h1>스크롤시 가로흐름 이미지</h1>
             <div class="row_img flow1">
               <div class="panel">
@@ -117,7 +117,7 @@
             
         </section>
 
-        <section class="section04">
+        <section class="section04" id="badge3">
           <h1>마우스 오버시 이미지 확장</h1>
           <div class="inner">
             <ul class="img-hover">
@@ -243,6 +243,8 @@ export default {
 
   mounted: function() {
     this.scrollAnimation();
+
+    this.scrollToEventSection();
   },
 
   methods: {
@@ -371,7 +373,17 @@ export default {
         });
       });
 
-    }
+    },
+
+
+    // 다른페이지에서 이동 후 현재페이지의 섹션찾기
+    scrollToEventSection() {
+      if (document.referrer.includes("/study/js")) {
+        this.scrollToElement("badge1");
+      } 
+    },
+
+    
   }
 
 };
