@@ -244,7 +244,12 @@ export default {
   mounted: function() {
     this.scrollAnimation();
 
-    this.scrollToEventSection();
+    // 앵커 실행
+    this.scrollToHash();
+    window.addEventListener('load', this.scrollToHash);
+  },
+  beforeUnmount() {
+    window.removeEventListener('load', this.scrollToHash);
   },
 
   methods: {
@@ -376,11 +381,16 @@ export default {
     },
 
 
-    // 다른페이지에서 이동 후 현재페이지의 섹션찾기
-    scrollToEventSection() {
-      if (document.referrer.includes("/study/js")) {
-        this.scrollToElement("badge1");
-      } 
+    // 현재페이지의 앵커이동
+    scrollToHash() {
+      if (window.location.hash) {
+        this.$nextTick(() => {
+          const element = document.querySelector(window.location.hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
     },
 
     

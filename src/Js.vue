@@ -4,6 +4,7 @@
         <!-- https://lannstark.tistory.com/6 -->
         {{ scriptInput.value }}
 
+        <a href="./GsapCdn" style="border:1px solid red;padding:20px;">gsap cdn</a>
         <a href="./Gsap#badge1" style="border:1px solid red;padding:20px;">1111gsap 페이지 이동</a>
         <a href="./Gsap#badge2" style="border:1px solid red;padding:20px;">2222gsap 페이지 이동</a>
         <a href="./Gsap#badge3" style="border:1px solid red;padding:20px;">3333gsap 페이지 이동</a>
