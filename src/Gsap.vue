@@ -241,20 +241,44 @@ export default {
 
 
 
-  mounted: function() {
+  mounted() {
     this.scrollAnimation();
 
-    // 앵커 실행
+    // 앵커 호출
     this.scrollToHash();
+    // this.checkDocumentReady();
     window.addEventListener('load', this.scrollToHash);
   },
-  beforeUnmount() {
-    window.removeEventListener('load', this.scrollToHash);
-  },
+  // beforeDestroy() {
+  //   window.removeEventListener('hashchange', this.scrollToHash);
+  //   window.removeEventListener('load', this.scrollToHash);
+  // },
 
   methods: {
-    scrollAnimation() {
+    // 앵커 이동
+    scrollToHash() {
+      if (window.location.hash) {
+        const element = document.querySelector(window.location.hash);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+            console.log(element);
+          }, 500);
+        }
+      }
+    },
 
+    // checkDocumentReady() {
+    //   if (document.readyState === 'complete') {
+    //     this.scrollToHash();
+    //   } else {
+    //     window.addEventListener('load', this.scrollToHash);
+    //   }
+    // },
+
+
+
+    scrollAnimation() {
       //상단타이틀
       gsap.to(".text_con1", {
         scrollTrigger: {
@@ -380,18 +404,6 @@ export default {
 
     },
 
-
-    // 현재페이지의 앵커이동
-    scrollToHash() {
-      if (window.location.hash) {
-        this.$nextTick(() => {
-          const element = document.querySelector(window.location.hash);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-    },
 
     
   }

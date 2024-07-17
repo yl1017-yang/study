@@ -9,6 +9,7 @@
         <a href="./Gsap#badge2" style="border:1px solid red;padding:20px;">2222gsap 페이지 이동</a>
         <a href="./Gsap#badge3" style="border:1px solid red;padding:20px;">3333gsap 페이지 이동</a>
 
+
         
           <!-- 노르웨이 기획전 -->
           <div class="event_wrap" ref="motionBoxes">
@@ -199,7 +200,7 @@ export default {
           } else {
             entry.target.classList.remove('active');
           }
-          console.log('entry:', entry);
+          // console.log('entry:', entry);
         });
       }, this.options);
     },
